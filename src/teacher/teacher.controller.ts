@@ -18,7 +18,6 @@ export class TeacherController {
 
   @Post()
   create(@Body() createTeacherDto: CreateTeacherDto) {
-    if (!createTeacherDto) throw new NotFoundException("Body not found");
     return this.teacherService.create(createTeacherDto);
   }
 

@@ -2,6 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Admin {
+  email: String!
+  first_name: String!
+  id: ID!
+  is_active: Boolean
+  is_superadmin: Boolean
+  last_name: String!
+  phone: String!
+}
+
+input CreateAdminDto {
+  confirm_password: String!
+  email: String!
+  first_name: String!
+  is_active: Boolean = true
+  is_superadmin: Boolean = false
+  last_name: String!
+  password: String!
+  phone: String!
+}
+
 input CreateTeacherDto {
   confirm_password: String!
   email: String!
@@ -14,13 +35,18 @@ input CreateTeacherDto {
 }
 
 type Mutation {
+  createAdmin(createAdminDto: CreateAdminDto!): Admin!
   createTeacher(createTeacherDto: CreateTeacherDto!): Teacher!
+  removeAdmin(id: ID!): Float!
   removeTeacher(id: ID!): Float!
+  updateAdmin(id: ID!, updateAdminDto: UpdateAdminDto!): Admin!
   updateTeacher(id: ID!, updateTeacherDto: UpdateTeacherDto!): Teacher!
 }
 
 type Query {
+  findAllAdmin: [Admin!]!
   findAllTeacher: [Teacher!]!
+  findOneAdmin(id: ID!): Admin!
   findOneTeacher(id: ID!): Teacher!
 }
 
@@ -32,6 +58,16 @@ type Teacher {
   last_name: String!
   phone: String!
   role: String!
+}
+
+input UpdateAdminDto {
+  confirm_password: String!
+  email: String!
+  first_name: String!
+  is_active: Boolean = true
+  is_superadmin: Boolean = false
+  last_name: String!
+  phone: String!
 }
 
 input UpdateTeacherDto {

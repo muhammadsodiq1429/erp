@@ -4,6 +4,10 @@ import { TeacherModule } from "./teacher/teacher.module";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import { StudentModule } from './student/student.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -31,6 +35,10 @@ import { TypeOrmModule } from "@nestjs/typeorm";
       playground: true,
     }),
     TeacherModule,
+    AdminModule,
+    AuthModule,
+    StudentModule,
+    CourseModule,
   ],
   controllers: [],
   providers: [],

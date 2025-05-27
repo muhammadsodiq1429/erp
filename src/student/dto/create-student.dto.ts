@@ -1,16 +1,16 @@
-import { Field, InputType } from "@nestjs/graphql";
+import { Field } from "@nestjs/graphql";
 import {
   IsBoolean,
+  IsDateString,
   IsEmail,
+  IsEnum,
   IsNotEmpty,
-  IsOptional,
   IsPhoneNumber,
   IsString,
   IsStrongPassword,
 } from "class-validator";
 
-@InputType()
-export class CreateTeacherDto {
+export class CreateStudentDto {
   @Field()
   @IsString()
   @IsNotEmpty()
@@ -28,6 +28,7 @@ export class CreateTeacherDto {
 
   @Field()
   @IsStrongPassword()
+  @IsNotEmpty()
   password: string;
 
   @Field()
@@ -41,12 +42,16 @@ export class CreateTeacherDto {
   phone: string;
 
   @Field()
-  @IsString()
+  @IsEnum({ MALE: "MALE", FEMALE: "FEMALE" })
   @IsNotEmpty()
-  role: string;
+  gender: "MALE" | "FEMALE";
+
+  @Field()
+  @IsDateString()
+  @IsNotEmpty()
+  date_of_birth: Date;
 
   @Field({ nullable: true, defaultValue: true })
   @IsBoolean()
-  @IsOptional()
   is_active: boolean;
 }

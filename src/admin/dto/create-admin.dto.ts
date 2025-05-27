@@ -10,7 +10,7 @@ import {
 } from "class-validator";
 
 @InputType()
-export class CreateTeacherDto {
+export class CreateAdminDto {
   @Field()
   @IsString()
   @IsNotEmpty()
@@ -40,10 +40,10 @@ export class CreateTeacherDto {
   @IsNotEmpty()
   phone: string;
 
-  @Field()
+  @Field({ nullable: true, defaultValue: false })
   @IsString()
   @IsNotEmpty()
-  role: string;
+  is_superadmin: boolean;
 
   @Field({ nullable: true, defaultValue: true })
   @IsBoolean()
